@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A12</title>
+</head>
+<body>
+    <h2>Image Slideshow with Timer</h2>
+    <img id="slideshow" src="" alt="Slideshow Image" width="400" style="display:block; margin-bottom:10px;">
+    <br>
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+
+    <script>
+       
+        const images = [
+            "https://images.pexels.com/photos/34121437/pexels-photo-34121437.jpeg",
+            "https://images.pexels.com/photos/33472641/pexels-photo-33472641.jpeg",
+            "https://images.pexels.com/photos/17769889/pexels-photo-17769889.jpeg"
+        ];
+        let currentIndex = 0;
+        const imgElement = document.getElementById('slideshow');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let timer;
+
+        function showImage(index) {
+            imgElement.src = images[index];
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+
+        function startSlideshow() {
+            timer = setInterval(nextImage, 3000);
+        }
+
+        function resetSlideshow() {
+            clearInterval(timer);
+            startSlideshow();
+        }
+
+        prevBtn.addEventListener('click', function() {
+            prevImage();
+            resetSlideshow();
+        });
+
+        nextBtn.addEventListener('click', function() {
+            nextImage();
+            resetSlideshow();
+        });
+
+    
+        showImage(currentIndex);
+        startSlideshow();
+    </script>
+</body>
+</html>

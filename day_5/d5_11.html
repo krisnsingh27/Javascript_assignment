@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11</title>
+</head>
+<body>
+   <textarea id="id" rows="5" cols="30"></textarea>
+    characters left: <span id ="charCount">100</span>
+    <script>
+        const textarea = document.getElementById('id');
+        const charCount = document.getElementById('charCount');
+        const maxChars =100;
+        textarea.addEventListener('input', ()=>{
+            const remaining = maxChars - textarea.value.length;
+            charCount.textContent =remaining;
+            if(remaining < 0){
+                charCount.style.color = 'red';
+            }else{
+                charCount.style.color = 'black';
+            }
+        })
+    </script>
+
+</body>
+</html>

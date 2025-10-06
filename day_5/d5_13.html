@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A13</title>
+</head>
+<body>
+    <button id="showBtn">Show Notification</button>
+    <div id="notification" style="display:none; background:#f0ad4e; color:#fff; border-radius:4px;">
+        This is a notification
+    </div>
+    <script>
+        const btn = document.getElementById('showBtn');
+        const notif = document.getElementById('notification');
+        btn.addEventListener('click', () => {
+            notif.style.display = 'block';
+            setTimeout(() => {
+                notif.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

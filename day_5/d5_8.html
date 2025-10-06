@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A8</title>
+</head>
+<body>
+<form id="emailForm">
+  <input type="text" id="email" placeholder="Enter email" />
+  <button type="submit">Submit</button>
+  <p id="emailError"></p>
+</form>
+<script>
+    const form=document.getElementById("emailForm")
+    const email=document.getElementById("email")
+    const emailError=document.getElementById("emailError")
+    form.addEventListener("submit",(e)=>{
+        if(!email.value.includes("@")){
+            e.preventDefault()
+            emailError.innerText="Invalid email format"
+        }else{
+            e.preventDefault()
+            emailError.innerText=""
+            console.log("valid email")
+        }
+    })
+</script>
+</body>
+</html>

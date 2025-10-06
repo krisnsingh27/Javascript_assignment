@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A15</title>
+</head>
+<body>
+   
+    <div id="myDiv" style="border: 1px solid red;">
+        <p>Mouse Position:</p>
+        <p>X: <span id="x-position">0</span></p>
+        <p>Y: <span id="y-position">0</span></p>
+    </div>
+
+<script>
+    let myDiv = document.getElementById("myDiv");
+    const xPositionElement = document.getElementById('x-position');
+    const yPositionElement = document.getElementById('y-position');
+
+     myDiv.addEventListener('mousemove', (e)=> {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            
+            xPositionElement.textContent = x;
+            yPositionElement.textContent = y;
+     })  
+</script>
+</body>
+</html>
