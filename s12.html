@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul id="id">
+        <li class="class">1</li>
+         <li class="class">2</li>
+          <li class="class">3</li>
+           <li class="class">4</li>
+            <li class="class">5</li>
+    </ul>
+    <script>
+        
+       
+       
+
+
+
+
+
+
+
+
+
+// multiple timers -> timer not updating
+
+
+
+
+// Query selector method
+// const list = document.querySelectorAll('.list')
+// list.forEach(item => {
+//     item.addEventListener('click', (e) => {
+//         console.log(e.target.innerText)
+//     })
+// })
+
+
+
+const id = document.querySelector('#id')
+const classElements = document.querySelectorAll('.class')
+
+id.addEventListener('click', (e) => {
+    e.stopPropagation()
+    console.log('Outer box')
+})
+classElements.addEventListener('click', (e) => {
+    e.stopPropagation()
+    console.log('Inner Box')
+})
+
+
+
+
+    </script>
+</body>
+</html>
+
