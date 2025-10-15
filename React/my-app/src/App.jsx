@@ -14,6 +14,9 @@ import ImageSlider from './components/Imagesilder'
 import SignupForm from './components/SignupForm'
 import Propsrendering from './components/Propsrendering'
 import Textprint from './components/Textprint'
+import Toggletheme from './components/Toggletheme'
+import List from './components/List'
+import Clickcounter from './components/Clickcounter'
 
 
 function App() {
@@ -24,7 +27,6 @@ function App() {
       <Backgroundcolor/>
       <P name="krish" age="25"/>
       <Changecontent/>
-
       <Event/>
       <Mousehover/>
        <Mouseposition/>
@@ -37,6 +39,9 @@ function App() {
        <Propsrendering name='ujjwal'/>
        <Propsrendering name='rohit'/>
        <Textprint/>
+       <Toggletheme/>
+       <List/>
+       <Clickcounter/>
 
     </div>
   )

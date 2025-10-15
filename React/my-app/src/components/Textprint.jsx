@@ -2,18 +2,22 @@ import React, { useState } from 'react'
 
 function Textprint() {
 
-  const [text,setText]=useState("")
+  let [text,setText]=useState("")
   const str="welcome to Dom";
   const handleclick = () => {
    
     let i = 0
     const id = setInterval(() => {
-      if (i < str.length-1) {
-        setText(prev => prev + str[i])
+      if(i<=str.length-1){
+      setText(prev => prev + str.charAt(i))
+      console.log(str.charAt(i));
+      
         i++;
-      } else {
-        clearInterval(id);
       }
+      else {(i == str.length-1) 
+        clearInterval(id)
+      }
+      
     }, 500)
   }
   return (

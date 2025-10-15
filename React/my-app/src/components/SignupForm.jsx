@@ -10,8 +10,8 @@ function SignupForm() {
     if (username.trim() === '') {
       setErrorMsg('Username is required');
     } else {
-      setErrorMsg('');
-      console.log('Form submitted!');
+      setErrorMsg('Form submitted');
+     
       
     }
   };

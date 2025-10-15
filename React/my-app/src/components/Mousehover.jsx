@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function Mousehover() {
-    const [color,setColor]=useState("")
+    const [color,setColor]=useState("green")
 
     const handlemouseenter=()=>{
         setColor("red")
