@@ -13,6 +13,7 @@ import BackgroundColorGenerator from './components/Backgroundcolorgenerator'
 import ImageSlider from './components/Imagesilder'
 import SignupForm from './components/SignupForm'
 import Propsrendering from './components/Propsrendering'
+import Textprint from './components/Textprint'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
        <Propsrendering name='raj'/>
        <Propsrendering name='ujjwal'/>
        <Propsrendering name='rohit'/>
+       <Textprint/>
 
     </div>
   )
