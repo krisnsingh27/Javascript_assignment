@@ -12,6 +12,7 @@ import Charactercount from './components/Charactercount'
 import BackgroundColorGenerator from './components/Backgroundcolorgenerator'
 import ImageSlider from './components/Imagesilder'
 import SignupForm from './components/SignupForm'
+import Propsrendering from './components/Propsrendering'
 
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
        <BackgroundColorGenerator/>
        <ImageSlider/>
        <SignupForm/>
+       <Propsrendering name='raj'/>
+       <Propsrendering name='ujjwal'/>
+       <Propsrendering name='rohit'/>
 
     </div>
   )
