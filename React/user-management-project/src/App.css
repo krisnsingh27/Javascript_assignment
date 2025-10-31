@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.app.light { background: #f9f9f9; color: #333; }
+.app.dark { background: #1e1e1e; color: #f9f9f9; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #6200ea;
+  color: white;
+}
+.logo { color: white; text-decoration: none; font-weight: bold; }
+
+.theme-btn {
+  background: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
