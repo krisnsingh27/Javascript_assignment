@@ -9,8 +9,7 @@ function MovieSearch() {
     const [query, setQuery] = useState('');
     const dispatch = useDispatch();
     const { movies, loading, error } = useSelector(state => state.movies);
-    console.log(movies)
-    console.log(loading)
+
 
     const handleSearch = () => {
         if (!query) return;
@@ -36,10 +35,16 @@ function MovieSearch() {
             <div className="movies-grid">
                 {movies.map(movie => (
                     <div key={movie.imdbID} className="movie-card">
+                       
                         <img
                             src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/150x225?text=No+Image"}
                             alt={movie.Title}
+                            onError={(e) => {
+                                e.target.onerror = null; 
+                                e.target.src = "https://via.placeholder.com/150x225?text=No+Image";
+                            }}
                         />
+
                         <h3>{movie.Title}</h3>
                         <p>{movie.Year}</p>
                     </div>

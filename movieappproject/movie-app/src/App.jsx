@@ -6,6 +6,11 @@ import Signup from './pages/SignupPage';
 import ProtectedRoute from './components/ProtectedRoute'; 
 import Navbar from './components/Navbar';
 import MovieSearch from './pages/MovieSearch';
+import Profile from './pages/Profile';
+import HomePage from './pages/HomePage';
+import NotFound from './pages/NotFound';
+import MovieDetails from './pages/MovieDetails';
+import Footer from './pages/Footer';
 
 
 function App() {
@@ -17,15 +22,24 @@ function App() {
          
           <Routes>
              
-             
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/movie/:movieId" element={<MovieDetails />} />
+
               <Route element={<ProtectedRoute />}>
               <Route path="/movie" element={<MovieSearch />} />
               
+              
             </Route>
+            <Route path="/profile" element={<Profile />} />
           </Routes>
+
+          <Footer/>
         </Router>
+
+
         
 
     </div>
