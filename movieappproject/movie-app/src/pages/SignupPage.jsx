@@ -14,7 +14,7 @@ function SignupPage() {
       alert("Please fill all details");
       return;
     }
-    const user = { name, email, password };
+    const user = { name, email, password  };
     localStorage.setItem("user", JSON.stringify(user));
     setName("");
     setEmail("");

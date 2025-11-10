@@ -9,6 +9,8 @@ function Navbar() {
         <div className="navbar-logo">
           <Link >My Movie App</Link>
         </div>
+
+        
         <div className="navbar-links">
           <Link to="/movie">MovieSearch</Link>
           <Link to="/signup">Signup</Link>

@@ -6,15 +6,15 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [, setIsLoggedIn] = useState(false);
-
+  
   const handlelogin = () => {
     const storeduser = JSON.parse(localStorage.getItem("user"));
-
+    
     if (!storeduser) {
       alert("No user found. Please signup first.");
       return;
-    }
-
+    }  
+  
     if (email === storeduser.email && password === storeduser.password) {
       alert("Login successful");
       localStorage.setItem("isLoggedIn", true);
