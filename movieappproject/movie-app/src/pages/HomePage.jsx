@@ -83,7 +83,7 @@ function HomePage() {
     
   ];
 
-  const API_KEY = '805bbb15'; 
+  const API_KEY = '3a125f13'; 
   const BASE_URL = 'https://www.omdbapi.com/';
 
   useEffect(() => {
