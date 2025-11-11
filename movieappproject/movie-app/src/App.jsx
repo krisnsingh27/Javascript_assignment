@@ -21,8 +21,9 @@ function App() {
         <Navbar/>
          
           <Routes>
-             
+             <Route element={<ProtectedRoute />}>
             <Route path="/" element={<HomePage />} />
+            </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="*" element={<NotFound />} />
@@ -33,7 +34,9 @@ function App() {
               
               
             </Route>
+            <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
+            </Route>
           </Routes>
 
           <Footer/>

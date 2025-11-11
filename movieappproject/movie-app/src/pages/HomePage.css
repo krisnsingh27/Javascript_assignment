@@ -93,3 +93,38 @@
 .home-container p[style*="color: red"] {
   font-weight: bold;
 }
+
+
+.movie-carousel img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.movie-carousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.movies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.movie-card {
+  width: 150px;
+  cursor: pointer;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+}
+
+.genre {
+  font-size: 0.9rem;
+  color: gray;
+}

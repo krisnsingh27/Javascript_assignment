@@ -59,31 +59,39 @@
 
 // export default HomePage;
 
+
+
+
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
-import './HomePage.css';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Carousel from 'react-bootstrap/Carousel';
+import './HomePage.css'; 
+
 
 function HomePage() {
   const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedGenre, setSelectedGenre] = useState('All');
-  const navigate=useNavigate()
+
+  const navigate = useNavigate();
 
   const movieKeywords = [
-    'titanic',
-    'avenger',
-    'border',
-    'superman',
-    'war',
-    'hanuman',
-    'ms dhoni the untold story',
-    
-    
+    'titanic', 'avenger', 'border', 'superman', 'war',
+    'hanuman', 'ms dhoni', 'iron man', 'batman', 'spiderman',
+    'thor', 'justice league', 'captain america', 'avengers',
+    'transformers', 'jurassic', 'inception', 'matrix', 'interstellar',
+    'joker', 'venom', 'doctor strange', 'black panther', 'wonder woman'
   ];
 
-  const API_KEY = '3a125f13'; 
+  const API_KEY = '8474797e';
   const BASE_URL = 'https://www.omdbapi.com/';
 
   useEffect(() => {
@@ -91,13 +99,13 @@ function HomePage() {
       try {
         setLoading(true);
         setError(null);
-        const allMovies = [];
+        let allMovies = [];
 
-        
         for (const keyword of movieKeywords) {
+          if (allMovies.length >= 90) break;
+
           const searchRes = await axios.get(`${BASE_URL}?apikey=${API_KEY}&s=${keyword}`);
           if (searchRes.data.Response === 'True') {
-            
             const detailPromises = searchRes.data.Search.map((m) =>
               axios.get(`${BASE_URL}?apikey=${API_KEY}&i=${m.imdbID}`)
             );
@@ -107,16 +115,19 @@ function HomePage() {
                 allMovies.push(res.data);
               }
             });
+
+           
+            allMovies = allMovies.filter(
+              (movie, index, self) =>
+                index === self.findIndex(
+                  (m) => m.imdbID === movie.imdbID || m.Poster === movie.Poster
+                )
+            );
           }
         }
 
-        
-        const uniqueMovies = allMovies.filter(
-          (movie, index, self) =>
-            index === self.findIndex((m) => m.imdbID === movie.imdbID)
-        );
-
-        setMovies(uniqueMovies);
+        setMovies(allMovies);
+        setFilteredMovies(allMovies);
       // eslint-disable-next-line no-unused-vars
       } catch (err) {
         setError('Failed to load movies. Please try again.');
@@ -128,31 +139,61 @@ function HomePage() {
     fetchMovies();
   }, []);
 
- 
-  const allGenres = ['All', ...new Set(
-    movies.flatMap((movie) =>
-      movie.Genre ? movie.Genre.split(',').map((g) => g.trim()) : []
-    )
-  )];
+  const handleGenreChange = (e) => {
+    const genre = e.target.value;
+    setSelectedGenre(genre);
 
+    if (genre === 'All') {
+      setFilteredMovies(movies);
+    } else {
+      setFilteredMovies(
+        movies.filter(
+          (movie) =>
+            movie.Genre && movie.Genre.toLowerCase().includes(genre.toLowerCase())
+        )
+      );
+    }
+  };
 
-  const filteredMovies = movies.filter((movie) => {
-    if (selectedGenre === 'All') return true;
-    return movie.Genre && movie.Genre.toLowerCase().includes(selectedGenre.toLowerCase());
-  });
+  const allGenres = ['All', 'Horror', 'Crime', 'Action', 'Adventure'];
 
   return (
     <div className="home-container">
+
+     
+   <Carousel fade interval={3000} pause="hover">
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://m.media-amazon.com/images/I/71rNJQ2g-EL._AC_UF1000,1000_QL80_.jpg"
+          alt="Titanic Poster"
+        />
+        <Carousel.Caption>
+          <h3>Titanic</h3>
+          <p>Epic love story on the ill-fated RMS Titanic.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://upload.wikimedia.org/wikipedia/en/7/7e/Inception_ver3.jpg"
+          alt="Inception Poster"
+        />
+        <Carousel.Caption>
+          <h3>Inception</h3>
+          <p>A mind-bending thriller by Christopher Nolan.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+
+
+   
       <h2>Popular Movies</h2>
 
-    
       <div className="filter-container">
         <label htmlFor="genre-select">Filter by Genre:</label>
-        <select
-          id="genre-select"
-          value={selectedGenre}
-          onChange={(e) => setSelectedGenre(e.target.value)}
-        >
+        <select id="genre-select" value={selectedGenre} onChange={handleGenreChange}>
           {allGenres.map((genre) => (
             <option key={genre} value={genre}>{genre}</option>
           ))}
@@ -170,13 +211,12 @@ function HomePage() {
         {filteredMovies.map((movie) => (
           <div key={movie.imdbID} className="movie-card">
             <img
-              src={
-                movie.Poster !== 'N/A'
-                  ? movie.Poster
-                  : 'https://via.placeholder.com/150x225?text=No+Image'
+              src={movie.Poster !== 'N/A'
+                ? movie.Poster
+                : 'https://via.placeholder.com/150x225?text=No+Image'
               }
-               onClick={() => navigate(`/movie/${movie.imdbID}`)}
               alt={movie.Title}
+              onClick={() => navigate(`/movie/${movie.imdbID}`)}
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = 'https://via.placeholder.com/150x225?text=No+Image';
@@ -193,6 +233,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-
-
