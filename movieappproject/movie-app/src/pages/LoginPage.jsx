@@ -1,28 +1,52 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Login.css'; 
+
+
+
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Login.css';
+
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [, setIsLoggedIn] = useState(false);
-  
+  const [message, setMessage] = useState(''); 
+  const [showMessage, setShowMessage] = useState(false); 
+  const navigate=useNavigate()
+ 
+
   const handlelogin = () => {
     const storeduser = JSON.parse(localStorage.getItem("user"));
-    
     if (!storeduser) {
-      alert("No user found. Please signup first.");
+      setMessage("No user found. Please signup first.");
+      setShowMessage(true);
+
       return;
-    }  
-  
+    }
     if (email === storeduser.email && password === storeduser.password) {
-      alert("Login successful");
+      setMessage("Login successful");
+      setShowMessage(true);
       localStorage.setItem("isLoggedIn", true);
       setIsLoggedIn(true);
+      if(setShowMessage){navigate('/movie') }
+      
+      
     } else {
-      alert("Wrong email or password");
+      setMessage("Wrong email or password");
+      setShowMessage(true);
     }
   };
+
+ 
+  useEffect(() => {
+    if (showMessage) {
+      const timer = setTimeout(() => {
+        setShowMessage(false);
+        setMessage(''); 
+      }, 4000);
+      return () => clearTimeout(timer); 
+    }
+  }, [showMessage]);
 
   return (
     <div className="login-container">
@@ -41,6 +65,21 @@ function Login() {
           placeholder="Enter password"
         />
         <button onClick={handlelogin}>Login</button>
+
+     
+        {showMessage && (
+          <div style={{
+            border: '1px solid black',
+            padding: '10px',
+            marginTop: '10px',
+            textAlign: 'center',
+            backgroundColor: '#f8d7da', 
+            color: '#721c24' 
+          }}>
+            {message}
+          </div>
+        )}
+
         <p className="signup-link">
           Don't have an account? <Link to="/signup">Signup</Link>
         </p>

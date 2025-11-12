@@ -91,7 +91,7 @@ function HomePage() {
     'joker', 'venom', 'doctor strange', 'black panther', 'wonder woman'
   ];
 
-  const API_KEY = '8474797e';
+  const API_KEY = 'ce36f814';
   const BASE_URL = 'https://www.omdbapi.com/';
 
   useEffect(() => {
@@ -161,10 +161,10 @@ function HomePage() {
     <div className="home-container">
 
      
-   <Carousel fade interval={3000} pause="hover">
+   <Carousel>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="w-100"
           src="https://m.media-amazon.com/images/I/71rNJQ2g-EL._AC_UF1000,1000_QL80_.jpg"
           alt="Titanic Poster"
         />
@@ -174,17 +174,7 @@ function HomePage() {
         </Carousel.Caption>
       </Carousel.Item>
 
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://upload.wikimedia.org/wikipedia/en/7/7e/Inception_ver3.jpg"
-          alt="Inception Poster"
-        />
-        <Carousel.Caption>
-          <h3>Inception</h3>
-          <p>A mind-bending thriller by Christopher Nolan.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+     
     </Carousel>
 
 

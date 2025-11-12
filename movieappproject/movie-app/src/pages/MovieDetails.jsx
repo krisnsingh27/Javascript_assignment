@@ -12,7 +12,7 @@ function MovieDetails() {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const res = await axios.get(`https://www.omdbapi.com/?apikey=8474797e&i=${movieId}&plot=full`);
+        const res = await axios.get(`https://www.omdbapi.com/?apikey=ce36f814f&i=${movieId}&plot=full`);
         setMovie(res.data);
       } catch (error) {
         console.error(error);

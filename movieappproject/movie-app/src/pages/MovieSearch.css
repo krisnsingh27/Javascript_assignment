@@ -36,12 +36,12 @@
 
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
+  /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+  gap: 30px;
 }
 
 .movie-card {
-  background: white;
+ 
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
@@ -64,3 +64,4 @@
   font-size: 14px;
   color: #555;
 }
+

@@ -41,11 +41,11 @@
 
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust minmax for card size */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
   gap: 20px;
   justify-content: center;
-  max-width: 1200px; /* Max width for the grid */
-  margin: 0 auto; /* Center the grid */
+  max-width: 1200px; 
+  margin: 0 auto; 
 }
 
 .movie-card {
@@ -57,7 +57,7 @@
   transition: transform 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Ensure cards have equal height */
+  height: 100%; 
 }
 
 .movie-card:hover {
@@ -66,8 +66,8 @@
 
 .movie-card img {
   width: 100%;
-  height: 300px; /* Fixed height for consistent image size */
-  object-fit: cover; /* Cover the area, cropping if necessary */
+  height: 300px; 
+  object-fit: cover; 
   border-bottom: 1px solid #eee;
 }
 
@@ -75,7 +75,7 @@
   font-size: 1.2em;
   margin: 15px 10px 5px;
   color: #333;
-  min-height: 40px; /* Ensure consistent title height */
+  min-height: 40px; 
 }
 
 .movie-card p {
@@ -84,7 +84,7 @@
   margin: 0 10px 15px;
 }
 
-/* Optional: Styling for loading and error messages */
+
 .home-container p {
   font-size: 1.1em;
   margin-top: 20px;
@@ -114,7 +114,7 @@
 }
 
 .movie-card {
-  width: 150px;
+  width: 200px;
   cursor: pointer;
 }
 
